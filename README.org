@@ -2,5 +2,8 @@
 A maxima service
 *** Using
 - Run ~sbcl exo-maxima.lisp~
-- Once the service is running, POST to ~/maxima~ with JSON in the form
-  of: ~{expression: "laplace(x, x, s);")}~
+- Once the service is running on port 5000, POST to ~/maxima~ with
+  JSON in the form of: ~{expression: "laplace(x, x, s);")}~
+*** Web UI
+A web UI for evaluating Maxima expressions is served at the root
+route.
