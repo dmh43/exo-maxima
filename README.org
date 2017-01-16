@@ -1,0 +1,6 @@
+* Exo-maxima
+A maxima service
+*** Using
+- Run ~sbcl exo-maxima.lisp~
+- Once the service is running, POST to ~/maxima~ with JSON in the form
+  of: ~{expression: "laplace(x, x, s);")}~
