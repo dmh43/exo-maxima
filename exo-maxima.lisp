@@ -9,6 +9,33 @@
 
 (ql:quickload :ningle)
 (ql:quickload :clack)
+(ql:quickload :cl-ppcre)
+
+(defun check-for-termination (input)
+  (or (search "$" input :test #'char-equal)
+      (search ";" input :test #'char-equal)))
+
+(defun parse-input (input)
+  (maxima::macsyma-read-string input))
+
+(defun get-varlist (expression)
+  (cdr (maxima::$listofvars expression)))
+
+(defun wrap-in-block (varlist expression)
+  `((MAXIMA::MPROG) ((MAXIMA::MLIST) ,@varlist) ,expression))
+
+(defun exo-meval (expression)
+  (let* ((result (maxima::meval* expression))
+         (output-elems (maxima::strgrind result))
+         (output-string (format nil "~{~A~}" output-elems)))
+    (format t output-string)
+    output-string))
+
+(defun process-input (input)
+  (let* ((input-expression (parse-input input))
+         (varlist (get-varlist input-expression))
+         (lex-expression (wrap-in-block varlist input-expression)))
+    (exo-meval lex-expression)))
 
 (defvar *app* (make-instance 'ningle:<app>))
 
@@ -22,12 +49,8 @@
 
 (setf (ningle:route *app* "/maxima" :method :POST)
       #'(lambda (params)
-          (let* ((expression (cdr (assoc "expression" params :test #'string=)))
-                 (parsed (maxima::macsyma-read-string expression))
-                 (result (maxima::meval* parsed))
-                 (elems (maxima::strgrind result))
-                 (output-string (format nil "~{~A~}" elems)))
-            (format t output-string)
-            output-string)))
+          (let ((input-expression (cdr (assoc "expression" params :test #'string=))))
+            (when (check-for-termination input-expression)
+              (process-input input-expression)))))
 
 (clack:clackup *app* :port 8080)
