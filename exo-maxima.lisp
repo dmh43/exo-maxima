@@ -3,8 +3,9 @@
 
 (in-package :exo-maxima)
 
-(load "./maxima-code/src/maxima-build.lisp")
-(maxima-load)
+(let ((*default-pathname-defaults* (truename "./maxima-code/src/")))
+  (load "maxima-build.lisp")
+  (maxima-load))
 
 (ql:quickload :ningle)
 (ql:quickload :clack)
@@ -13,6 +14,7 @@
 
 (setf (ningle:route *app* "/")
       #'(lambda (params)
+          (declare (ignore params))
           (with-open-file (stream "./index.html")
             (let ((data (make-string (file-length stream))))
               (read-sequence data stream)
