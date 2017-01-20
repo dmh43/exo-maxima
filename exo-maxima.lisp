@@ -3,11 +3,6 @@
 
 (in-package :exo-maxima)
 
-;;(ql:quickload :maxima)
-(load "./maxima-code/configure.lisp")
-(configure :interactive nil)
-(load "./maxima-code/src/maxima-build.lisp")
-(maxima-compile)
 (load "./maxima-code/src/maxima-build.lisp")
 (maxima-load)
 
@@ -33,4 +28,4 @@
             (format t output-string)
             output-string)))
 
-(clack:clackup *app* :port 80)
+(clack:clackup *app* :port 8080)
