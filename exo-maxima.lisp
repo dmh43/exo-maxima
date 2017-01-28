@@ -49,6 +49,8 @@
               (read-sequence data stream)
               data))))
 
+(setf (ningle:route *app* "/resume") (hunchentoot:handle-static-file "resume.pdf"))
+
 (setf (ningle:route *app* "/maxima" :method :POST)
       #'(lambda (params)
           (let ((input-expression (cdr (assoc "expression" params :test #'string=)))
@@ -57,4 +59,4 @@
               (handler-case (process-input input-expression symbolic-p)
                 (sb-int:simple-control-error () "invalid input or unsupported functionality"))))))
 
-(clack:clackup *app* :port 8080)
+(setq a (clack:clackup *app* :port 8080))

@@ -1,41 +1,100 @@
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <style>
-         body {background: #DDBB88;}
+         body {background: #333333;}
          #content {
-             display: inline-block;
-             margin-left: 5%;
-             margin-right: 5%;
-             vertical-align: top;
-             color: #4D4B42;
-         }
-
-         #image {
-             background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/2d/%D0%9D%D1%96%D0%B6%D0%BD%D0%B8%D0%B9_%D1%80%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2%D0%B8%D0%B9_%D1%81%D0%B2%D1%96%D1%82%D0%BB%D0%BE.jpg");
-             display: inline-block;
+             font-family: 'Raleway', sans-serif;
+             font-size: 16pt;
              width: 50%;
-             height: 100%;
-             box-shadow: 10px 0px 10px rgba(0,0,0,0.2);
+             margin-left: 20%;
+             margin-top: 10%;
+             color: #CCCCCC;
+         }
+         #content .personal {
+             font-size: 16pt;
+         }
+         #content #details {
+             position: relative;
+         }
+         #content #projects {
+             display: inline-block;
+         }
+         #content #view {
+             position: absolute;
+             top: 0;
+             right: 0;
+         }
+         #content a, #content .project-li {
+             color: #999999;
+         }
+         #content a:hover, #content .project-li:hover {
+             -webkit-filter: brightness(140%);
+             filter: brightness(140%);
+             text-decoration: none;
+         }
+         #content hr {
+             border-top: 1px solid rgba(238, 238, 238, 0.27);
+         }
+         #content input {
+             color: #000000;
+             width:
+         }
+         .project-li {
+             display: inline;
          }
         </style>
     </head>
     <body>
-        <div id="image"></div>
         <div id="content">
-            <h1>
-                Homepage for exo-maxima
-            </h1>
-            <p>
-                Welcome.
-            </p>
-            <form action="/maxima" method="POST">
-                <input type="text" name="expression">
-                <input type="submit" value="Evaluate">
-            </form>
+            <h2>
+                dany haddad
+            </h2>
+            <div class="personal">
+                <a href="https://www.github.com/dmh43"><i class="fa fa-github"></i></a>
+                <a href="https://twitter.com/danyhaddad43"><i class="fa fa-twitter"></i></a>
+                <a href="mailto:dh@danyhaddad.me"><i class="fa fa-address-book"></i></a>
+                <a href="https://github.com/dmh43/resume-public/raw/master/resume.pdf"><i class="fa fa-file-text"></i></a>
+            </div>
+            <hr/>
+            <div id="details">
+                <div id="projcts">
+                    <script>
+                     var hideshowMaxima = function() {
+                         var mydiv = document.getElementById('maxima');
+                         if (mydiv.style.display === 'inline-block' || mydiv.style.display === '')
+                             mydiv.style.display = 'none';
+                         else
+                             mydiv.style.display = 'inline-block'
+                     }
+                    </script>
+                    <p>
+                        <div class="project-li" onclick="hideshowMaxima();"> exo-maxima </div>
+                        <a href="https://github.com/dmh43/exo-maxima"><i class="fa fa-code-fork"></i></a>
+                    </p>
+                    <p>
+                        <a class="project-li" href="https://pain-tetris.herokuapp.com/"> pain-tetris </a>
+                        <a href="https://github.com/dmh43/Pain-Tetris"><i class="fa fa-code-fork"></i></a>
+                    </p>
+                    <p>
+                        <a class="project-li" href="https://om-time.herokuapp.com/"> om-time </a>
+                        <a href="https://github.com/dmh43/Om-Time"><i class="fa fa-code-fork"></i></a>
+                    </p>
+                </div>
+                <div id="view">
+                    <div id="maxima" style="display: none">
+                        <form action="/maxima" method="POST">
+                            <input type="text" name="expression" value="laplace(x*sin(x), x, s);">
+                            <input type="submit" value="eval">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
