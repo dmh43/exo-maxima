@@ -31,11 +31,13 @@
     (format t output-string)
     output-string))
 
-(defun process-input (input)
+(defun process-input (input symbolic-p)
   (let* ((input-expression (parse-input input))
          (varlist (get-varlist input-expression))
          (lex-expression (wrap-in-block varlist input-expression)))
-    (exo-meval lex-expression)))
+    (if symbolic-p
+        (prin1-to-string (maxima::meval* lex-expression))
+        (exo-meval lex-expression))))
 
 (defvar *app* (make-instance 'ningle:<app>))
 
@@ -49,8 +51,10 @@
 
 (setf (ningle:route *app* "/maxima" :method :POST)
       #'(lambda (params)
-          (let ((input-expression (cdr (assoc "expression" params :test #'string=))))
+          (let ((input-expression (cdr (assoc "expression" params :test #'string=)))
+                (symbolic-p (cdr (assoc "symbolic" params :test #'string=))))
             (when (check-for-termination input-expression)
-              (process-input input-expression)))))
+              (handler-case (process-input input-expression symbolic-p)
+                (sb-int:simple-control-error () "invalid input or unsupported functionality"))))))
 
 (clack:clackup *app* :port 8080)
