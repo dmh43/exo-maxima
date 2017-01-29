@@ -67,25 +67,34 @@
                 <div id="projcts">
                     <script>
                      var hideshowMaxima = function() {
-                         var mydiv = document.getElementById('maxima');
-                         if (mydiv.style.display === 'inline-block' || mydiv.style.display === '')
-                             mydiv.style.display = 'none';
-                         else
-                             mydiv.style.display = 'inline-block'
+                         if (window.screen.width > 800) {
+                             var mydiv = document.getElementById('maxima');
+                             if (mydiv.style.display === 'inline-block' || mydiv.style.display === '')
+                                 mydiv.style.display = 'none';
+                             else
+                                 mydiv.style.display = 'inline-block'
+                         }
                      }
                     </script>
-                    <p>
-                        <div class="project-li" onclick="hideshowMaxima();"> exo-maxima </div>
+                    <div>
+                        <a onclick="hideshowMaxima();"><i class="fa fa-external-link-square"></i></a>
                         <a href="https://github.com/dmh43/exo-maxima"><i class="fa fa-code-fork"></i></a>
-                    </p>
-                    <p>
-                        <a class="project-li" href="https://pain-tetris.herokuapp.com/"> pain-tetris </a>
+                        <div style="display: inline-block;"> exo-maxima </div>
+                    </div>
+                    <div>
+                        <a class="project-li" href="https://pain-tetris.herokuapp.com/">
+                            <i class="fa fa-external-link-square"></i>
+                        </a>
                         <a href="https://github.com/dmh43/Pain-Tetris"><i class="fa fa-code-fork"></i></a>
-                    </p>
-                    <p>
-                        <a class="project-li" href="https://om-time.herokuapp.com/"> om-time </a>
+                        <div style="display: inline-block;"> pain-tetris </div>
+                    </div>
+                    <div>
+                        <a class="project-li" href="https://om-time.herokuapp.com/">
+                            <i class="fa fa-external-link-square"></i>
+                        </a>
                         <a href="https://github.com/dmh43/Om-Time"><i class="fa fa-code-fork"></i></a>
-                    </p>
+                        <div style="display: inline-block;"> om-time </div>
+                    </div>
                 </div>
                 <div id="view">
                     <div id="maxima" style="display: none">
