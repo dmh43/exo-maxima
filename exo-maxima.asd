@@ -2,7 +2,8 @@
   :serial t
   :description "exo-maxima"
   :depends-on (#:clack
-               #:ningle)
+               #:ningle
+               #:cl-ppcre)
   :components ((:file "package")
 	       (:module :src
 			:serial t
