@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+body {
+  font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+}
+
+a:link {
+  color: #005585;
+  text-decoration: none;
+}
+a:visited {
+  color: #485270;
+}
+a:hover {
+  color: #b83800;
+  text-decoration: underline;
+}
+
+#main {
+  text-align: center;
+}
+
+body {background: #333333;}
+#content {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16pt;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 10%;
+  color: #CCCCCC;
+}
+#content .personal {
+  font-size: 16pt;
+}
+#content #details {
+  position: relative;
+}
+#content #view {
+  margin-top: 20px;
+}
+
+#content hr {
+  border-top: 1px solid rgba(238, 238, 238, 0.27);
+}
+#content input {
+  color: #000000;
+  width:
+}
