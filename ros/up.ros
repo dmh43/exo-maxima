@@ -5,6 +5,8 @@ exec ros -Q -- $0 "$@"
 |#
 
 (push (truename #P"./") asdf:*central-registry*)
+(ql:quickload :qlot)
+(qlot:install)
 (ql:quickload :exo-maxima)
 
 (defun main (&rest argv)
