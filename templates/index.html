@@ -7,21 +7,22 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <script src="/js/index.js"></script>
     </head>
     <body>
         <div id="content">
-            <h2>
-                exo-maxima
-            </h2>
+            <h2> exo-maxima </h2>
             <hr/>
             <div id="details">
-                <div> A cloud based mathematics service. </div>
+                <div>
+                    <p>A cloud based computer algebra service.</p>
+                    <p>Leverage the legendary Maxima<sup><a class="ref" href="http://maxima.sourceforge.net/"><i class="fa fa-external-link"></i></a></sup> library, without the common lisp.</p>
+                </div>
                 <div id="view">
                     <div id="maxima">
-                        <form action="/maxima" method="POST">
-                            <input type="text" name="expression" value="laplace(x*sin(x), x, s);">
-                            <input type="submit" value="eval">
-                        </form>
+                        <input type="text" id="maxima-expression" value="laplace(x*sin(x), x, s);">
+                        <a class="delim" onclick="submit()"><i class="fa fa-long-arrow-right"></i></a>
+                        <input disabled="true" id="result-display">
                     </div>
                 </div>
             </div>
