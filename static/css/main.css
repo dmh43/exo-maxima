@@ -36,7 +36,34 @@ body {background: #333333;}
   position: relative;
 }
 #content #view {
-  margin-top: 20px;
+  margin-top: 50px;
+}
+
+.doc {
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  background: rgba(0,0,0,0.3);
+  font-family: 'PT Mono', monospace;
+  font-size: 12pt;
+}
+
+.doc .param {
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.doc .request {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: auto;
+  display: inline-block;
+  color: DarkGoldenrod;
+  background: rgba(0,0,0,0.5);
 }
 
 #content hr {
@@ -56,6 +83,8 @@ body {background: #333333;}
 
 input[type="text"], textarea {
   background-color: rgba(255, 255, 255,0.97);
+  font-family: 'PT Mono', monospace;
+  width: 45%;
 }
 
 .delim {
@@ -66,10 +95,12 @@ input[type="text"], textarea {
   margin-right: 10px;
 }
 
-.delim:hover {
-  background-color: rgba(255,255,255,0.3);
-  border-radius: 5px;
-  cursor: pointer;
+@media (hover:hover) {
+  .delim:hover {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 a.delim:link {
@@ -83,4 +114,20 @@ a.delim:visited {
 a.delim:hover {
   text-decoration: none;
   color: #CCCCCC;
+}
+
+@media (max-width: 600px) {
+  input[type="text"] {
+    display: block;
+    width: 90vw;
+  }
+  .delim {
+    width: 40px;
+    display: block;
+    margin: 10px auto;
+  }
+  #content {
+    width: 90vw;
+    margin: 0 auto;
+  }
 }

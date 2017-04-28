@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-
+  document.onkeyup = function (event) {
+    if (event.keyCode === 13) { submit(); }
+  }
 })
 
 function submit () {
