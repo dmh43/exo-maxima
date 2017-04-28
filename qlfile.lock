@@ -1,0 +1,11 @@
+("quicklisp" .
+ (:class qlot.source.ql:source-ql-all
+  :initargs (:project-name "quicklisp" :%version :latest)
+  :version "2015-12-18"))
+("maxima" .
+ (:class qlot.source.github:source-github
+  :initargs (:project-name "maxima" :repos "dmh43/maxima" :ref nil :branch nil :tag "master")
+  :version "github-NIL"
+  :repos "dmh43/maxima"
+  :url "https://github.com/dmh43/maxima/archive/master.tar.gz"
+  :ref nil))

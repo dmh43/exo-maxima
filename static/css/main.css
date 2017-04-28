@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+body {
+  font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+}
+
+a.ref:link {
+  color: #CCCCCC;
+  text-decoration: none;
+}
+a.ref:visited {
+  color: #485270;
+}
+a.ref:hover {
+  color: #b83800;
+  text-decoration: underline;
+}
+
+#main {
+  text-align: center;
+}
+
+body {background: #333333;}
+#content {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16pt;
+  width: 50%;
+  margin-left: 20%;
+  margin-top: 10%;
+  color: #CCCCCC;
+}
+#content .personal {
+  font-size: 16pt;
+}
+#content #details {
+  position: relative;
+}
+#content #view {
+  margin-top: 50px;
+}
+
+.doc {
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  background: rgba(0,0,0,0.3);
+  font-family: 'PT Mono', monospace;
+  font-size: 12pt;
+}
+
+.doc .param {
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.doc .request {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: auto;
+  display: inline-block;
+  color: DarkGoldenrod;
+  background: rgba(0,0,0,0.5);
+}
+
+#content hr {
+  border-top: 1px solid rgba(238, 238, 238, 0.27);
+}
+#content input, button, textarea {
+  color: #000000;
+  border-radius: 5px;
+  border-style: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.ref {
+  font-size: 8pt;
+}
+
+input[type="text"], textarea {
+  background-color: rgba(255, 255, 255,0.97);
+  font-family: 'PT Mono', monospace;
+  width: 45%;
+}
+
+.delim {
+  color: #CCCCCC;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (hover:hover) {
+  .delim:hover {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+a.delim:link {
+  color: #CCCCCC;
+  text-decoration: none;
+}
+a.delim:visited {
+  text-decoration: none;
+  color: #CCCCCC;
+}
+a.delim:hover {
+  text-decoration: none;
+  color: #CCCCCC;
+}
+
+@media (max-width: 600px) {
+  input[type="text"] {
+    display: block;
+    width: 90vw;
+  }
+  .delim {
+    width: 40px;
+    display: block;
+    margin: 10px auto;
+  }
+  #content {
+    width: 90vw;
+    margin: 0 auto;
+  }
+}
