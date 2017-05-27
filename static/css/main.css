@@ -77,6 +77,23 @@ body {background: #333333;}
   padding-right: 10px;
 }
 
+.maxima-input {
+}
+
+.maxima-input > input {
+  display: block;
+}
+
+.maxima-input, .maxima-output {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.symbolic-input {
+  font-family: 'PT Mono', monospace;
+  font-size: 12pt;
+}
+
 .ref {
   font-size: 8pt;
 }
@@ -84,7 +101,6 @@ body {background: #333333;}
 input[type="text"], textarea {
   background-color: rgba(255, 255, 255,0.97);
   font-family: 'PT Mono', monospace;
-  width: 45%;
 }
 
 .delim {

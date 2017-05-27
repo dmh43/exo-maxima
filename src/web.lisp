@@ -27,15 +27,30 @@
 (defroute "/" ()
   (render #P"index.html"))
 
-(defroute ("/maxima" :method :post) (&key _parsed)
-  (with-output-to-string (s)
-    (format
-     s
-     (let ((input-expression (cdr (assoc "expression" _parsed :test #'string=)))
-           (symbolic-p (cdr (assoc "symbolic" _parsed :test #'string=))))
-       (when (check-for-termination input-expression)
-         (handler-case (process-input input-expression symbolic-p)
-           (sb-int:simple-control-error () "invalid input or unsupported functionality")))))))
+(defun handle-maxima-request (expression symbolic-p)
+  (handler-case (with-output-to-string (s)
+                  (format s
+                          (when (check-for-termination expression)
+                            (process-input expression symbolic-p))))
+    (sb-int:simple-control-error (condition)
+      (let ((response (context :response)))
+        (print condition)
+        (setf (response-status response) 400
+              (response-body response) "Invalid input or unsupported functionality.")))
+    (sb-kernel:case-failure (condition)
+      (let ((response (context :response)))
+        (print condition)
+        (setf (response-status response) 400
+              (response-body response) "Missing statement termination
+              token. Make sure the expression to evaluate ends with
+              a ; to signal the end of input (see Maxima documentation
+              for more info)")))))
+
+(defroute ("/maxima" :method :get) (&key |expression|)
+  (handle-maxima-request |expression| nil))
+
+(defroute ("/maxima/symbolic" :method :get) (&key |expression|)
+  (handle-maxima-request |expression| t))
 
 ;;
 ;; Error pages

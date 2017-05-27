@@ -20,14 +20,21 @@
                 </div>
                 <div id="view">
                     <div id="maxima">
-                        <input type="text" id="maxima-expression" value="laplace(x*sin(x), x, s);">
+                        <div class="maxima-input">
+                            <input type="text" id="maxima-expression" value="laplace(x*sin(x), x, s);">
+                            <label class="symbolic-input"><input type="checkbox" id="symbolic">symbolic</label>
+                        </div>
                         <a class="delim" onclick="submit()"><i class="fa fa-long-arrow-right"></i></a>
-                        <input type="text" disabled="true" id="result-display">
+                        <div class="maxima-output">
+                            <input type="text" disabled="true" id="result-display">
+                        </div>
                     </div>
                     <div class="doc">
                         <div class="explanation">To evaluate a Maxima expression:</div>
-                        <div class="request">POST /maxima {"expression": "1+1;", "symbolic": false}</div>
-                        <div class="explanation">The <div class="param">symbolic</div> param indicates whether the response should be a maxima formatted syntactical expression.</div>
+                        <div class="request">GET /maxima expression="1+1;"</div>
+                        <div>or</div>
+                        <div class="request">GET /maxima/symbolic expression="1+1;"</div>
+                        <div class="explanation">The <div class="param">symbolic</div> route indicates whether the response should be a maxima formatted syntactical expression.</div>
                     </div>
                 </div>
             </div>
