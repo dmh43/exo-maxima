@@ -37,7 +37,14 @@
   (cdr (maxima::$listofvars expression)))
 
 (defun wrap-in-block (varlist expression)
-  `((MAXIMA::MPROG) ((MAXIMA::MLIST) ,@varlist) ,expression))
+  (let ((base-path '(((MAXIMA::MSETQ) MAXIMA::$FILE_SEARCH_MAXIMA
+                      ((MAXIMA::MLIST)
+                       "./quicklisp/dists/maxima/software/maxima-master/share/###.mac"))
+                     ((MAXIMA::MSETQ) MAXIMA::$SYSTEM ((MAXIMA::MLIST) ""))
+                     ((MAXIMA::MSETQ) MAXIMA::$FILE_SEARCH_LISP
+                      ((MAXIMA::MLIST)
+                       "./quicklisp/dists/maxima/software/maxima-master/src/###.lisp")))))
+    `((MAXIMA::MPROG) ((MAXIMA::MLIST) ,@base-path ,@varlist) ,expression)))
 
 (defun exo-meval (expression)
   (let* ((result (maxima::meval* expression))
